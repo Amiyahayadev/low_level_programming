@@ -4,8 +4,8 @@
 
 /**
  * main - Entry point
- * Description: Print last digit of a random number n
- * Return - Always 0 if (success)
+ * Description - Print last digit of a random number n
+ * Return: Always 0 if (success)
  */
 int main(void)
 {
