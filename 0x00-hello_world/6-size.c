@@ -4,7 +4,7 @@
  *
  * Description - Print file size
  *
- * Return: Always 0 (Success)
+ * Return: Always value (Success)
  */
 int main(void)
 {
