@@ -6,7 +6,7 @@
  *
  * Description: Check if n is positive or negative
  *
- * Return -Always 0 if (success)
+ * Return - Always 0 if (success)
  */
 
 int main(void)
@@ -21,6 +21,6 @@ int main(void)
 	else if (n == 0)
 		printf("%d is zero\n", n);
 	else
-		printf("%d id negative\n", n);
+		printf("%d is negative\n", n);
 	return (0);
 }
