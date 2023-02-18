@@ -9,20 +9,16 @@
  */
 int main(void)
 {
-	int a = 0, b = 0;
+	int a;
 
+	a = 0;
 	while (a < 10)
 	{
-		b = a;
-		while (b < 10)
-		{
-			putchar(a + '0');
-			putchar(',');
-			putchar(' ');
-			putchar(b + '0');
-			b++;
-		}
+		putchar(a + '0');
+		putchar(',');
+		putchar(' ');
 		a++;
 	}
+	putchar('\n');
 	return (0);
 }
