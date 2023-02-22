@@ -8,7 +8,7 @@
  * @n: a number to be entered by user
  * Return: either 0 or a positive number
  */
-int abs(int n)
+int _abs(int n)
 {
-	return (abs(n));
+	return (_abs(n));
 }
