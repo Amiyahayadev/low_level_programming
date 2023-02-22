@@ -2,7 +2,7 @@
 
 /**
  * main - Entry point
- *@c: The character to print
+ * Description - The character to print
  * Return: Always 0 if (success)
  */
 int main(void)
