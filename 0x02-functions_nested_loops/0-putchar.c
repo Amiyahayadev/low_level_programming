@@ -8,7 +8,8 @@
  */
 int main(void)
 {
-	int word = 0;
+	char word[] = "_putchar";
+	int i = 0;
 
 	while (word[i] != '\0')
 	{
