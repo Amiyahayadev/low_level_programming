@@ -1,4 +1,5 @@
-#include <stdlib.h>
+#include "main.h"
+#include <stdio.h>
 
 /**
  * _abs - get the absoluite of a number
@@ -7,7 +8,7 @@
  * @n: a number to be entered by user
  * Return: either 0 or a positive number
  */
-int _abs(int n)
+int abs(int n)
 {
 	return (abs(n));
 }
