@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define MAX_PASSWORD_LENGTH 25
 
 /**
  * main - entry point
@@ -11,22 +12,17 @@
  */
 int main(void)
 {
-	const int password_length = 14;
-	
-	char password[password_length + 1];
-
-	const char charset[] = "abcdefghijklmnopqrstuvwxyz!ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-	srand(time(NULL));
 	int i;
+
+	int password_length = rand() % MAX_PASSWORD_LENGTH + 1;
+
+	char password[MAX_PASSWORD_LENGTH + 1];
+
 	for (i = 0; i < password_length; i++)
 	{
-		int index = rand() % sizeof(charset) - 1;
-		password[i] = charset[index];
+		password[i] = rand() % 94 + 33;
 	}
-
 	password[password_length] = '\0';
-	printf("%s\n", password);
-
-	return (0);
+	printf("Generated password: %s\n", password);
+	return 0;
 }
