@@ -12,3 +12,13 @@ void swap_int(int *a, int *b)
 	*a = 42;
 	*b = 98;
 }
+void swap_int(int *a, int *b)
+{
+        *a = -4096;
+        *b = 1024;
+}
+void swap_int(int *a, int *b)
+{
+	*a = INT_MIN;
+	*b = INT_MAX;
+}
