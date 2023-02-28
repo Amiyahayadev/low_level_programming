@@ -11,13 +11,13 @@
  * Return: void
  */
 
-int main(void) {
+    int main(void) {
     const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+[]{};:,./<>?`~";
     const int password_length = 15;
     char password[16];
     int i;
 
-    srand(time(NULL));  // Seed the random number generator with current time
+    srand(time(NULL));
 
     for (i = 0; i < password_length; i++) {
         password[i] = charset[rand() % strlen(charset)];
