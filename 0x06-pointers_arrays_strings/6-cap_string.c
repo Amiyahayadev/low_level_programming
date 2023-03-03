@@ -13,7 +13,7 @@ char *cap_string(char *str)
 	int capit_next;
 
 	i = 0;
-	capitalize_next = 1;
+	capit_next = 1;
 	while (str[i] != '\0')
 	{
 		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
@@ -22,15 +22,15 @@ char *cap_string(char *str)
 		str[i] == '(' || str[i] == ')' || str[i] == '{' ||
 		str[i] == '}')
 		{
-			capitalize_next = 1;
+			capit_next = 1;
 		}
 		else
 		{
-			if (capitalize_next && str[i] >= 'a' && str[i] <= 'z')
+			if (capit_next && str[i] >= 'a' && str[i] <= 'z')
 			{
 				str[i] -= 32;
 			}
-			capitalize_next = 0;
+			capit_next = 0;
 		}
 		i++;
 	}
