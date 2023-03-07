@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * _strpbrk - finds the first character in s that matches any of the bytes in accept.
- * This does not include the terminating null-characters
+ * _strpbrk - finds the first character in s that matches any of the bytes
+ * accept, This does not include the terminating null-characters
  * @s: the C string to be scanned
  * @accept: the C string containing the characters to match
  *
