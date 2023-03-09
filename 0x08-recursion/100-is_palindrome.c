@@ -37,8 +37,10 @@ int is_palindrome(char *s)
 	else if (s[0] != s[ln - 1])
 		return (0);
 	else
+	{
 		s[ln - 1] = '\0';
 		res = is_palindrome(s + 1);
 		s[ln - 1] = s[0];
 		return (res);
+	}
 }
