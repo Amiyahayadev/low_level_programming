@@ -2,7 +2,7 @@
 
 /**
  * _puts - prints a string
- * @str: points to the string to be displayed
+ * @s: points to the string to be displayed
  *
  * Return: nothing
  */
