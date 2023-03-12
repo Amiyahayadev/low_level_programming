@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 
 /**
  * main - program that prints a string to std error
@@ -9,11 +9,12 @@
  */
 int main(void)
 {
-	char *msg = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n"
+	char *msg = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
 
 	int i;
 
 	for (i = 0; msg[i] != '\0'; i++)
+	;
 
 	write(2, msg, i);
 	return (1);
