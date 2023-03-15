@@ -26,6 +26,7 @@ int _strlen(char *s)
 * @s2: second string to append
 * return: pointer to a newly allocated space in memory
 */
+
 char *str_concat(char *s1, char *s2)
 {
 	char *s3c;
