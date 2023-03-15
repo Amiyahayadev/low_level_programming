@@ -17,6 +17,6 @@ int main(int argc, __attribute__ ((unused)) char **argv)
 		while (count < argc - 1)
 			count++;
 	}
-	printf("%d", count);
+	printf("%d\n", count);
 	return (0);
 }
