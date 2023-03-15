@@ -24,6 +24,7 @@ int _strlen(char *s)
 * *str_concat - program concatenates two strings
 * @s1: first string to add
 * @s2: second string to append
+*
 * return: pointer to a newly allocated space in memory
 */
 
