@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
 * main - program that prints it's name
@@ -18,7 +17,7 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		/* iterate through the characters in an argument to use putchar*/
 		for (j = 0; argv[i][j] != '\0'; j++)
-			putchar(argv[i][j]);
-		putchar('\n');
+			_putchar(argv[i][j]);
+		_putchar('\n');
 	return (0);			
 }
