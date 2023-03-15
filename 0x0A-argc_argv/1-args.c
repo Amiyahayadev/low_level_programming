@@ -13,8 +13,10 @@ int main(int argc, __attribute__ ((unused)) char **argv)
 	if (argc == 1)
 		count = 0;
 	else if (argc > 1)
-		for (; count < argc; count++)
-		;
-	printf("%d\n", count);
+	{
+		while (count < argc - 1)
+			count++;
+	}
+	printf("%d", count);
 	return (0);
 }
