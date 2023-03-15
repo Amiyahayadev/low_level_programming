@@ -10,10 +10,10 @@ int main(int argc, __attribute__ ((unused)) char **argv)
 {
 	int count;
 
-	if (argc > 1)
+	if (argc >= 1)
 	{
-		for (count = 1; count < argc; count++)
-			printf("%d\n", argc);
+		for (count = 0; count < argc; count++)
+			printf("%d\n", count);
 	}
 	return (0);
 }
