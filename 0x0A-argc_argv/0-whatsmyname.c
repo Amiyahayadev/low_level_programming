@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
 * main - program that prints it's name
@@ -8,16 +9,15 @@
 */
 int main(int argc, char **argv)
 {
-	int i, j;
+	int j;
 
-	/*index of first argument is initialized to 1*/
-	i = 0;
-	
 	/*check the no of arguments passed in is 1*/
-	if (argc < 2)
-		/* iterate through the characters in an argument to use putchar*/
-		for (j = 0; argv[i][j] != '\0'; j++)
-			_putchar(argv[i][j]);
-		_putchar('\n');
-	return (0);			
+	if (argc == 1)
+	{
+	/* iterate through the characters in 1st argument to use putchar*/
+		for (j = 0; argv[0][j] != '\0'; j++)
+			putchar(argv[0][j]);
+		putchar('\n');
+	}
+	return (0);
 }
