@@ -6,14 +6,14 @@
 * @argv: pointer to an array of pointers to strings(the arguments)
 * Return: 0 on success
 */
-int main(int argc, char **argv)
+int main(int argc, __attribute__ ((unused)) char **argv)
 {
 	int count;
 
 	if (argc > 1)
 	{
 		for (count = 1; count < argc; count++)
-			printf("%d\n", agrc);
+			printf("%d\n", argc);
 	}
 	return (0);
 }
