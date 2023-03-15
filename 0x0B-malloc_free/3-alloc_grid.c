@@ -31,7 +31,7 @@ int **alloc_grid(int width, int height)
 	{
 		grid[x] = malloc(sizeof(int) * width);
 		/*check for memory allocation for subarray*/
-		if (grid[x] == NULL )
+		if (grid[x] == NULL)
 		{
 		/*if allocation fails, free up all previously allocated memo*/
 			for (y = 0; y < x; y++)
