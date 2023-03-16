@@ -6,7 +6,7 @@
 * main - program that adds positive numbers only
 * @argc: count to all arguments
 * @argv: pointer to an array of pointers to strings(the arguments)
-* Return: o 0n SUCCESS, 1 on Error
+* Return: 0 on  SUCCESS, 1 on Error
 */
 int main(int argc, char **argv)
 {
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		printf("%d\n", sum);
 	}
 	else
-		printf("%d\n", 0);
+		printf("%d\n", '\0');
 
 	return (0);
 }
