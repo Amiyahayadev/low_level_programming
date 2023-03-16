@@ -19,18 +19,15 @@ int main(int argc, char **argv)
 		printf("%d\n", 0);
 		return (0);
 	}
-	else
+	for (i = 1; i < argc; i++)
 	{
-		for (i = 1; i < argc; i++)
+		if (atoi(argv[i]) <= 0)
 		{
-			if (!atoi(argv[i]) || atoi(argv[i]) <= 0)
-			{
-				flag = 1;
-				break;
-			}
-			else
-				sum += atoi(argv[i]);
+			flag = 1;
+			break;
 		}
+		else
+			sum += atoi(argv[i]);
 	}
 
 	if (flag)
