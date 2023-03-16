@@ -19,8 +19,8 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	for (i = 1; argc < 4 && i < argc; i++)
-	{
 		mulRes *= atoi(agrv[i]);
-	}
+
+	printf("%d\n", mulRes);
 	return (0);
 }
