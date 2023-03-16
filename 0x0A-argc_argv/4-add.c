@@ -11,9 +11,7 @@
 int main(int argc, char **argv)
 {
 	int sum = 0;
-	
 	int flag = 0;
-
 	int i;
 
 	if (argc < 2)
