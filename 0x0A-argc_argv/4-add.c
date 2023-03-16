@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	int flag = 0;
 
 	int i;
-	
+
 	if (argc < 2)
 	{
 		printf("%d", 0);
@@ -32,8 +32,8 @@ int main(int argc, char **argv)
 		else
 			sum += atoi(argv[i]);
 	}
-	
-	if(flag)
+
+	if (flag)
 	{
 		printf("Error\n");
 		return (1);
