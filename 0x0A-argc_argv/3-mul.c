@@ -15,11 +15,13 @@ int main(int argc, char **argv)
 	mulRes = 1;
 	if (argc < 1)
 	{
-		printf("Error\n");
+		printf("Error");
+		putchar('\n');
+		return (1);
 	}
 	for (i = 1; argc < 4 && i < argc; i++)
 		mulRes *= atoi(argv[i]);
 
 	printf("%d\n", mulRes);
-	return (1);
+	return (0);
 }
