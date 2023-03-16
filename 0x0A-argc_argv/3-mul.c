@@ -6,18 +6,19 @@
 * main - receives arguments to be multiplied
 * @argc: count to all arguments
 * @argv: pointer to an array of pointers to strings(the arguments)
-* Return: 0 on SUCCESS
+* Return: 0 on SUCCESS, 1 on ERROR
 */
 int main(int argc, char **argv)
 {
 	int mulRes, i;
 	
 	mulRes = 1;
-	if (argc < 1)
+	if (argc != 3)
 	{
 		printf("Error\n");
+		return (1);
 	}
-	for (i = 1; argc < 4 && i < argc; i++)
+	for (i = 1; i < argc; i++)
 		mulRes *= atoi(argv[i]);
 
 	printf("%d\n", mulRes);
