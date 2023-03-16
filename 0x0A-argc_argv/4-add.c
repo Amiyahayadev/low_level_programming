@@ -16,14 +16,14 @@ int main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		printf("%d", 0);
+		printf("%d\n", 0);
 		return (0);
 	}
 	else
 	{
 		for (i = 1; i < argc; i++)
 		{
-			if (!atoi(argv[i]) || atoi(argv[i]) < 1)
+			if (!atoi(argv[i]) || atoi(argv[i]) <= 0)
 			{
 				flag = 1;
 				break;
