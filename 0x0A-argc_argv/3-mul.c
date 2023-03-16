@@ -16,11 +16,10 @@ int main(int argc, char **argv)
 	if (argc < 1)
 	{
 		printf("Error\n");
-		return (1);
 	}
 	for (i = 1; argc < 4 && i < argc; i++)
 		mulRes *= atoi(argv[i]);
 
 	printf("%d\n", mulRes);
-	return (0);
+	return (1);
 }
