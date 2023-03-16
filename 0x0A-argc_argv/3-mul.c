@@ -15,9 +15,7 @@ int main(int argc, char **argv)
 	mulRes = 1;
 	if (argc < 1)
 	{
-		printf("Error");
-		putchar('\n');
-		return (1);
+		printf("Error\n");
 	}
 	for (i = 1; argc < 4 && i < argc; i++)
 		mulRes *= atoi(argv[i]);
