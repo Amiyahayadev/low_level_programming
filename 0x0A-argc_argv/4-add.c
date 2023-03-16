@@ -10,11 +10,12 @@
 */
 int main(int argc, char **argv)
 {
-	int sum, i;
+	int sum = 0;
+
+	int i;
 
 	if (argc > 1)
 	{
-		sum = 0;
 		for (i = 1; i < argc; i++)
 		{
 			if (!atoi(argv[i]) || atoi(argv[i]) < 1)
