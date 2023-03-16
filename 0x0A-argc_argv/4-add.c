@@ -11,24 +11,34 @@
 int main(int argc, char **argv)
 {
 	int sum = 0;
+	
+	int flag = 0;
 
 	int i;
-
-	if (argc > 1)
+	
+	if (argc < 2)
 	{
-		for (i = 1; i < argc; i++)
-		{
-			if (!atoi(argv[i]) || atoi(argv[i]) < 1)
-			{
-				printf("Error\n");
-				return (1);
-			}
-			sum += atoi(argv[i]);
-		}
-		printf("%d\n", sum);
+		printf("%d", 0);
+		return (0);
 	}
-	else
-		printf("%d\n", 0);
 
+	for (i = 1; i < argc; i++)
+	{
+		if (!atoi(argv[i]) || atoi(argv[i]) < 1)
+		{
+			flag = 1;
+			break;
+		}
+		else
+			sum += atoi(argv[i]);
+	}
+	
+	if(flag)
+	{
+		printf("Error\n");
+		return (1);
+	}
+
+	printf("%d\n", sum);
 	return (0);
 }
