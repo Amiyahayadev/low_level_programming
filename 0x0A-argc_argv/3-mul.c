@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	int mulRes, i;
-	
+
 	mulRes = 1;
 	if (argc != 3)
 	{
