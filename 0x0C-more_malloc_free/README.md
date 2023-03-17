@@ -1,1 +1,1 @@
-# Malloc and exit()[D
+# Malloc and exit(3)

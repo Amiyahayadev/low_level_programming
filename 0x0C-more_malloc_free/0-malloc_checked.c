@@ -9,6 +9,7 @@
 */
 void *malloc_checked(unsigned int b)
 {
+	/*declare a pointer of generic data type*/
 	void *p = malloc(b);
 
 	if (p != NULL)
