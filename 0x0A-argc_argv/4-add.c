@@ -13,7 +13,7 @@
 int main(int argc, char **argv)
 {
 	int sum = 0;
-	int flag = 0;
+
 	int i;
 
 	if (argc < 2)
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	}
 	for (i = 1; i < argc; i++)
 	{
-		if ((dig_check(argv[i]))
+		if (dig_check(argv[i]))
 		{
 			sum += atoi(argv[i]);
 		}
@@ -39,17 +39,16 @@ int main(int argc, char **argv)
 }
 /**
 * dig_check - checks if string character's are digits
-* @str - string to checked
+* @s: string to checked
 * Return: 1 if digit or 0 of not a digit
 */
 int dig_check(char *s)
-{ 
+{
 	unsigned int i;
-	
+
 	for (i = 0; i < strlen(s); i++)
 	{
-		if(!isdigit(s[i]))
+		if (!isdigit(s[i]))
 			return (0);
-	}	
 	return (1);
 }
