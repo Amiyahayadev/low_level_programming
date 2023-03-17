@@ -1,6 +1,8 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
 * main - program that adds positive numbers only
@@ -21,19 +23,15 @@ int main(int argc, char **argv)
 	}
 	for (i = 1; i < argc; i++)
 	{
-		if (!(dig_check(argv[i]))
+		if ((dig_check(argv[i]))
 		{
-			flag = 1;
-			break;
+			sum += atoi(argv[i]);
 		}
 		else
-			sum += atoi(argv[i]);
-	}
-
-	if (flag)
-	{
-		printf("Error\n");
-		return (1);
+		{
+			printf("Error\n");
+			return (1);
+		}
 	}
 
 	printf("%d\n", sum);
