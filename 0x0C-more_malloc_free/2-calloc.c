@@ -9,7 +9,7 @@
 */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *arr;
+	void *arr;
 
 	unsigned int i;
 
@@ -22,7 +22,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	/*proceed to initialize memory with 0*/
 
-	for (i = 0; i < nmemb; i++)
+	for (i = 0; i < size; i++)
 	{
 		arr[i] = '\0';
 	}
