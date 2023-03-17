@@ -2,8 +2,9 @@
 #include "main.h"
 
 /**
-* @*malloc_checked - program that that allocates memory using malloc
-*
+* *malloc_checked - program that that allocates memory using malloc
+* @b: size of bytes to allocate
+* Return: pointer to the address of first element
 */
 void *malloc_checked(unsigned int b)
 {
