@@ -3,7 +3,7 @@
 
 /**
 * *_calloc - function that allocates memory for an array like calloc
-* @n: number of elements of the array of int data type
+* @nmemb: number of elements of the array of int data type
 * @size: number of bytes each element
 * Return: a pointer to the allocated memory or NULL if allocation fails
 */
