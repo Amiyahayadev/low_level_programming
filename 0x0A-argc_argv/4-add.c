@@ -16,11 +16,6 @@ int main(int argc, char **argv)
 
 	int i;
 
-	if (argc < 2)
-	{
-		printf("%d\n", 0);
-		return (0);
-	}
 	for (i = 1; i < argc; i++)
 	{
 		if (dig_check(argv[i]))
@@ -37,6 +32,7 @@ int main(int argc, char **argv)
 	printf("%d\n", sum);
 	return (0);
 }
+
 /**
 * dig_check - checks if string character's are digits
 * @s: string to checked
@@ -50,5 +46,6 @@ int dig_check(char *s)
 	{
 		if (!isdigit(s[i]))
 			return (0);
+	}
 	return (1);
 }
