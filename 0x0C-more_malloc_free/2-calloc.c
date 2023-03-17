@@ -9,7 +9,7 @@
 */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *arr;
+	char *arr;
 
 	/*check if no of elements or byte size is zero*/
 	if (nmemb == 0 || size == 0)
@@ -21,6 +21,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	/*proceed to initialize memory with 0*/
 	/*pointer of type void* can't be used in arithmetic*/
 	_memset(arr, 0, size);
+
 	return (arr);
 }
 
