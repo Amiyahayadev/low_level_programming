@@ -47,7 +47,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		n = l2;
 
 	l3 = l1 + n + 1;
-	s3n = malloc(sizeof *s3n * l3);
+	s3n = malloc(sizeof(*s3n) * l3);
 
 	if (s3n == NULL)
 	{
