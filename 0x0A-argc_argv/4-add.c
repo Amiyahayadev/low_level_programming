@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	}
 	for (i = 1; i < argc; i++)
 	{
-		if (atoi(argv[i]) <= 0)
+		if (!(dig_check(argv[i]))
 		{
 			flag = 1;
 			break;
@@ -38,4 +38,20 @@ int main(int argc, char **argv)
 
 	printf("%d\n", sum);
 	return (0);
+}
+/**
+* dig_check - checks if string character's are digits
+* @str - string to checked
+* Return: 1 if digit or 0 of not a digit
+*/
+int dig_check(char *s)
+{ 
+	unsigned int i;
+	
+	for (i = 0; i < strlen(s); i++)
+	{
+		if(!isdigit(s[i]))
+			return (0);
+	}	
+	return (1);
 }
