@@ -9,7 +9,7 @@
 */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *arr;
+	void *arr;
 
 	/*check if no of elements or byte size is zero*/
 	if (nmemb == 0 || size == 0)
