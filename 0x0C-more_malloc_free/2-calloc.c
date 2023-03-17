@@ -20,7 +20,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	/*proceed to initialize memory with 0*/
 	/*pointer of type void* can't be used in arithmetic*/
-	_memset((char *)arr, 0, nmemb * size);
+	_memset(arr, 0, nmemb * size);
 
 	return (arr);
 }
@@ -40,7 +40,7 @@ char *_memset(char *s, char b, unsigned int n)
 
 	for (i = 0; i < n; i++)
 	{
-		s[i] = b;
+		((char *)s)[i] = b;
 	}
 	return (s);
 }
