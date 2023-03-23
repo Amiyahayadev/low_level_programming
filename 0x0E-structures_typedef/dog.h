@@ -1,3 +1,6 @@
+#ifndef DOG_H
+#define DOG_H
+
 /**
  * struct dog - new type for a dog struct
  * @name: pointer to name string
@@ -6,9 +9,6 @@
  *
  * Description: Longer description
  */
-
-#ifndef DOG_H
-#define DOG_H
 
 struct dog
 {
