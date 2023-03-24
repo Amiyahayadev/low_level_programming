@@ -12,15 +12,18 @@
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	if (name == NULL || owner == NULL)
+		return (NULL);	
+
 	dog_t *my_dog;
 
 	my_dog = malloc(sizeof(struct dog));
 	if (my_dog == NULL)
 		return (NULL);
 
-	my_dog->name = name ? strdup(name) : "(nil)";
+	my_dog->name = name ? strdup(name) : NULL;
 	my_dog->age = age;
-	my_dog->owner = owner ? strdup(owner) : "(nil)";
-
+	my_dog->owner = owner ? strdup(owner) : NULL;
+	
 	return (my_dog);
 }
