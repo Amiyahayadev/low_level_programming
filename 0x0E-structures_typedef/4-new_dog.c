@@ -18,22 +18,23 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (my_dog == NULL)
 		return (NULL);
 
-	my_dog->name = strdup(name) != NULL ? strdup(name) : NULL;
-	if (strdup(name) == NULL)
+	my_dog->name = strdup(name);
+	if (my_dog->name == NULL)
 	{
 		free(my_dog);
 		return (NULL);
 	}
 
-	my_dog->age = age;
 
-	my_dog->owner = strdup(owner) != NULL ? strdup(owner) : NULL;
-	if (strdup(owner) == NULL)
+	my_dog->owner = strdup(owner);
+	if (my_dog->name == NULL)
 	{
 		free(my_dog->name);
 		free(my_dog);
 		return (NULL);
 	}
+
+	my_dog->age = age;
 
 	return (my_dog);
 }
