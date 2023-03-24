@@ -2,7 +2,8 @@
 #include "dog.h"
 /**
 * free_dog - frees all successfully allocated memory
-*
+* @d: pointer to the dog structure passed
+* Return: void
 */
 void free_dog(dog_t *d)
 {
