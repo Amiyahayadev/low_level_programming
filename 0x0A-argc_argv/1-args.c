@@ -7,9 +7,12 @@
  */
 int main(int argc, char __attribute__ ((unused)) *argv[])
 {
-	/* since no of arguments passed is given by argc */
-	printf("%d", argc);
-	printf("\n");
+	/* Check if no other argument was passed except program name*/
+	if (argc == 1)
+		printf("0\n");
+	else
+		printf("%d\n", argc - 1);
+
 	return (0);
 }
 
