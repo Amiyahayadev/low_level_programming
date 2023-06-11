@@ -11,10 +11,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, j;
-
-	int sum = 0;
-	int error = 0;
+	int i, sum;
 
 	/*check	IF  no character was passed */
 	if (argc == 1)
@@ -24,27 +21,24 @@ int main(int argc, char *argv[])
 		/*iterate through the string arguments */
 		for (i = 1; i < argc; i++)
 		{
+			int j;
 		/*check IF the current character in each string is a digit */
 			for (j = 0; argv[i][j] != '\0'; j++)
 			{
-				/*If isn't, set error flag to 1 and BREAK out of 1st loopt*/
+				/*If isn't, set error flag to 1 and EXIT the function*/
 				if (!isdigit(argv[i][j]))
 				{
 					printf("Error\n");
-					error = 1;
-					break;
+					return (1);
 				}
 			}
 		}
-		if (!error)
-		{	
-			for (i = 1; i < argc; i++)
-			{
-				sum += atoi(argv[i]);
-			}
-			printf("%d\n", sum);
+		for (i = 1; i < argc; i++)
+		{
+			sum += atoi(argv[i]);
 		}
-	}	
-	return (error ? 1 : 0);
+		printf("%d\n", sum);	
+	}
+	return (0);
 }
 
