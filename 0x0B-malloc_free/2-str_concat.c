@@ -38,3 +38,22 @@ char *str_concat(char *s1, char *s2)
 	nstr[ln3] = '\0';
 	return (nstr);
 }
+
+/**
+ * _strlen - returns the length of a string
+ * @s: the string to be measured
+ *
+ * Return: the actual length of the string
+ */
+int _strlen(char *s)
+{
+	int len;
+
+	len = 0;
+	while (*s != '\0')
+	{
+		len++;
+		s++;
+	}
+	return (len);
+}
