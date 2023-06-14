@@ -16,14 +16,14 @@ char *str_concat(char *s1, char *s2)
 
 	unsigned int ln1, ln2, ln3;
 
-	ln1 = _strlen(s1);
-	ln2 = _strlen(s2);
-	ln3 = ln1 + ln2 + 1;
-
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
+
+	ln1 = _strlen(s1);
+	ln2 = _strlen(s2);
+	ln3 = ln1 + ln2 + 1;
 
 	nstr = malloc(ln3);
 	if (nstr == NULL)
