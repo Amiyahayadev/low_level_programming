@@ -36,6 +36,11 @@ int **alloc_grid(int width, int height)
 			tdarr[i][k] = 0;
 		}
 	}
+	for (i = 0; i < height; i++)
+	{
+		free(tdarr[i]);
+	}
+	free (tdarr);
 	return (tdarr);
 }
 
