@@ -13,7 +13,7 @@ void *malloc_checked(unsigned int b)
 	ma = malloc(b);
 	if (ma != NULL)
 	{
-		return ((void *)ma);
+		return (ma);
 	}
 	else
 		exit(98);
