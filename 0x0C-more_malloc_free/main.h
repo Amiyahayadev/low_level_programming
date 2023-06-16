@@ -8,5 +8,11 @@ void *_calloc(unsigned int nmemb, unsigned int size);
 int *array_range(int min, int max);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _strlen(char *s);
+int _isdigit(int n);
+int multiply(int a, int b);
+int _putchar(char c);
+void print_int(int num);
+void *create_array(unsigned int nmemb, unsigned int size);
+void print_error(void);
 
 #endif /*MAIN_H already exists*/
