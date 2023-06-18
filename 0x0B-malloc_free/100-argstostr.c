@@ -13,8 +13,6 @@ char *argstostr(int ac, char **av)
 
 	char *nstr;
 
-	char *newl = "\n";
-
 	tlen = 0;
 
 	if (ac == 0 || av == NULL)
@@ -45,7 +43,7 @@ char *argstostr(int ac, char **av)
 			nstr[ndex] = av[i][j];
 			ndex++;
 		}
-		nstr[ndex] = newl[0];
+		nstr[ndex] = '\n';
 		ndex++;
 	}
 	nstr[ndex] = '\0';
