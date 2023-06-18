@@ -43,8 +43,7 @@ char *argstostr(int ac, char **av)
 	{
 		temp = str_concat(nstr, av[i]);
 		free(nstr);
-		nstr = temp;
-		nstr = str_concat(nstr, newl);
+		nstr = str_concat(temp, newl);
 		free(temp);
 	}
 	return (nstr);
