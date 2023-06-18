@@ -8,7 +8,7 @@
  */
 int is_palindrome(char *s)
 {
-	return(palin_check(s, 0, _strlen(s) - 1));
+	return (palin_check(s, 0, _strlen_recursion(s) - 1));
 }
 
 /**
@@ -31,20 +31,15 @@ int palin_check(char *s, int start, int end)
 }
 
 /**
- * _strlen - returns the length of a string
- * @s: the string to be measured
- *
- * Return: the actual length of the string
+ * _strlen_recursion - finds the lenght of a string recursively
+ * @s: pointer to string
+ * Return: total length
  */
-int _strlen(char *s)
-{
-	int len;
 
-	len = 0;
-	while (*s != '\0')
-	{
-		len++;
-		s++;
-	}
-	return (len);
+int _strlen_recursion(char *s)
+{
+	if (*s == '\0')
+		return (0);
+	else
+		return (1 + _strlen_recursion(s + 1));
 }
