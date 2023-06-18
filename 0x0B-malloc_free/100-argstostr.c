@@ -9,9 +9,9 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int i, tlen, new_len;
+	int i, j, tlen, new_len, ndex;
 
-	char *nstr, *temp;
+	char *nstr;
 
 	char *newl = "\n";
 
@@ -29,23 +29,26 @@ char *argstostr(int ac, char **av)
 
 	/* total length of newline characters be stored*/
 	new_len = ac;
-	tlen = tlen + new_len;
 
 	/*new memory for concatenated string, including null terminator*/
-	nstr =  malloc((tlen + 1) * sizeof(char));
+	nstr =  malloc((tlen + new_len + 1) * sizeof(char));
 	if (nstr == 0)
 		return (NULL);
 
 	/* initialize new memory as an empty string */
-	nstr[0] = '\0';
+	ndex = 0;
 
 	for (i = 0; i < ac; i++)
 	{
-		temp = str_concat(nstr, av[i]);
-		free(nstr);
-		nstr = str_concat(temp, newl);
-		free(temp);
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			nstr[ndex] = av[i][j];
+			ndex++;
+		}
+		nstr[ndex] = newl[0];
+		ndex++;
 	}
+	nstr[ndex] = '\0';
 	return (nstr);
 }
 
