@@ -32,7 +32,7 @@ char *argstostr(int ac, char **av)
 	tlen = tlen + new_len;
 
 	/*new memory for concatenated string, including null terminator*/
-	nstr =  malloc(tlen + 1);
+	nstr =  malloc(tlen * sizeof(char));
 	if (nstr == 0)
 		return (NULL);
 
