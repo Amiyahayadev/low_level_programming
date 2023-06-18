@@ -11,7 +11,7 @@ char *argstostr(int ac, char **av)
 {
 	int i, tlen, new_len;
 
-	char *nstr;
+	char *nstr, *temp;
 
 	char *newl = "\n";
 
@@ -41,7 +41,9 @@ char *argstostr(int ac, char **av)
 
 	for (i = 0; i < ac; i++)
 	{
-		nstr = str_concat(nstr, av[i]);
+		temp = str_concat(nstr, av[i]);
+		free(nstr);
+		nstr = temp;
 		nstr = str_concat(nstr, newl);
 	}
 	return (nstr);
@@ -84,6 +86,7 @@ char *str_concat(char *s1, char *s2)
 		nstr[i + j] = s2[j];
 	}
 	nstr[ln3 - 1] = '\0';
+
 	return (nstr);
 }
 
