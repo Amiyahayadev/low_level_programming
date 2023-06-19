@@ -12,19 +12,40 @@
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
 	/* allocate mem for each string in struct dog */
-	d->name = malloc(_strlen(name) + 1);
-	d->owner = malloc(_strlen(owner) + 1);
+	d->name = strdup(name);
+	d->owner = strdup(owner);
 
 	/* initialize each field of struct dog my_dog*/
-	_strcpy(d->name, name);
 	d->age = age;
-	_strcpy(d->owner, owner);
+}
+
+/**
+ * _strdup - creates duplicate of a string in a newly alloacted memory
+ * @str: pointer to original string
+ * Return: pointer to deplicate string
+ */
+char *_strdup(char *str)
+{
+	char *dstr;
+
+	unsigned int ln;
+
+	if (str == NULL)
+		return (NULL);
+
+	ln = _strlen(str) + 1;
+	dstr = malloc(sizeof(char) * ln);
+
+	if (dstr == NULL)
+		return (NULL);
+
+	dstr = _memcpy(dstr, str, ln);
+	return (dstr);
 }
 
 /**
  * _strlen - returns the length of a string
  * @s: the string to be measured
- *
  * Return: the actual length of the string
  */
 int _strlen(char *s)
@@ -38,20 +59,21 @@ int _strlen(char *s)
 }
 
 /**
- * _strcpy - Copies a string to a buffer
- * @dest: Buffer to copy to
- * @src: String to copy
- *
- * Return: Pointer to dest
+ * _memcpy - copies n characters from memory area src to memory area dest
+ * @dest: pointer to the destination memory area
+ * where the content is to be copied.
+ * @src: pointer to the source of data to be copied
+ * @n: the number of bytes to be copied
+ * Return: a pointer to dest
  */
-char *_strcpy(char *dest, char *src)
+char *_memcpy(char *dest, char *src, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
-	for (i = 0; src[i] != '\0'; i++)
+	for (i = 0; i < n; i++)
 	{
 		dest[i] = src[i];
 	}
-	dest[i] = '\0';
 	return (dest);
 }
+
