@@ -11,7 +11,7 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	/* allocate mem for string field in struct dog */
+	/* allocate mem for each string in struct dog */
 	d->name = malloc(_strlen(name) + 1);
 	d->owner = malloc(_strlen(owner) + 1);
 
