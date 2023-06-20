@@ -16,16 +16,21 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (newDog == NULL)
 		return (NULL);
 
-	/* Check original pointers for NULL values*/
-	if (name != NULL)
-		newDog->name = _strdup(name);
-	else
+	/* Check if memory failed, return from function*/
+	newDog->name = _strdup(name);
+	if (newDog->name == NULL)
+	{
+		free(newDog);
 		return (NULL);
+	}
 
-	if (owner != NULL)
-		newDog->owner =  _strdup(owner);
-	else
+	newDog->owner =  _strdup(owner);
+	if (newDog->owner == NULL)
+	{
+		free(newDog->name);
+		free(newDog);
 		return (NULL);
+	}
 
 	if (age != -1)
 		newDog->age = age;
@@ -46,6 +51,9 @@ char *_strdup(char *str)
 	char *dstr;
 
 	unsigned int ln;
+
+	if (str == NULL)
+		return (NULL);
 
 	ln = _strlen(str) + 1;
 	dstr = malloc(ln);
@@ -84,7 +92,8 @@ int _strlen(char *s)
 {
 	int len;
 
-	for (len = 0; s[len] != '\0'; len++);
+	for (len = 0; s[len] != '\0'; len++)
+	;
 
 	return (len);
 }
