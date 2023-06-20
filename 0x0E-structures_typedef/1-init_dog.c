@@ -11,6 +11,8 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
+	if (d == NULL)
+		return;
 	/* allocate mem for each string in struct dog */
 	d->name = _strdup(name);
 	d->owner = _strdup(owner);
