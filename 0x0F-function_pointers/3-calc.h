@@ -3,9 +3,9 @@
 
 /**
  * struct op - Struct op
- *
+ * op_t: abbreviation for struct op type
  * @op: The operator
- * @f: The function associated
+ * @f: Pointer to The associated operational function
  */
 typedef struct op
 {
