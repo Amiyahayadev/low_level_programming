@@ -7,7 +7,8 @@
  */
 void print_char(va_list arg)
 {
-	printf("%c", va_arg(arg, int));
+	char c = va_arg(arg, int);
+	printf("%c", c);
 }
 
 /**
@@ -17,7 +18,7 @@ void print_char(va_list arg)
  */
 void print_int(va_list arg)
 {
-	printf("%d", va_arg(arg, int););
+	printf("%d", va_arg(arg, int));
 }
 
 /**
