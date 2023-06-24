@@ -3,14 +3,13 @@
 
 #include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
- * struct type - user defined variable
- * arg_v: variable of to hold types of accepted argument
+ * struct type - user defined datatype to hold types of accepted argument
  * @format: variable to represent each format character
  * @print_function: function pointer to required functions
  */
+/* arg_v: type definition for struct type */
 typedef struct type
 {
 	char format;
