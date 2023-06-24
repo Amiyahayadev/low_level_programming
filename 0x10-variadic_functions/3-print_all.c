@@ -17,6 +17,8 @@ void print_all(const char * const format, ...)
 
 	unsigned int i, j;
 
+	char *separator = "";
+
 	va_list ap;
 
 	va_start(ap, format);
@@ -29,9 +31,9 @@ void print_all(const char * const format, ...)
 		{
 			if (format[j] == typ[i].format)
 			{
+				printf("%s", separator);
 				typ[i].print_function(ap);
-				if (i < ((sizeof(typ) / sizeof(typ[0])) - 1))
-					printf(", ");
+				separator = ", ";
 				break;
 			}
 			i++;
