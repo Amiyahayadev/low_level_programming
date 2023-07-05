@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * free_listint - frees a list of integer data and sets it to NULL
+ * free_listint2 - frees a list of integer data and sets it to NULL
  * @head: Indirect reference to the SLL
  * Return: void
  */
