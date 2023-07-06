@@ -1,7 +1,9 @@
-#include "stdio.h"
+#include "lists"
+
 /**
  * delete_nodeint_at_index - delets a node at specified index
  * @head: pointer to SLL
+ * @index: index of node to delete
  * Return: 1 if succeeded, -1 if it failed
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
@@ -22,12 +24,12 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	}
 	/* Check if index is out of range */
 	if (current == NULL)
-		return -1;
+		return (-1);
 	if (index == 0)
 	{
 		*head = current->next;
 		free(current);
-		return (i);
+		return (1);
 	}
 	previous->next = current->next;
 	free(current);
