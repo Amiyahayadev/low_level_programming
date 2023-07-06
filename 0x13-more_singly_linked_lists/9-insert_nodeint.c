@@ -9,35 +9,40 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *new, *prevNode, *temp;
+	listint_t *new, *prev, *temp;
 	unsigned int i;
 
-	if (head == NULL || *head == NULL)
-		return (NULL);
-
-	temp = *head;
-	/* Check for position out of range*/
-	for (i = 0; i < idx - 1 && temp != NULL; i++)
-		temp = temp->next;
-	if (temp == NULL && i < idx - 1)
+	if (head == NULL)
 		return (NULL);
 
 	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	if (!new)
 		return (NULL);
-
 	new->n = n;
 	new->next = NULL;
-	if (idx == 0)
+	/*if list is empty or index is at first node*/
+	if (*head == NULL || idx == 0)
 	{
 		new->next = *head;
 		*head = new;
+		return (new);
 	}
-	else
+	
+	/*to the node just before the desired index*/
+	temp = *head;
+	for (i = 0; i < idx && temp != NULL; i++)
 	{
-		prevNode = temp;
-		new->next = temp->next;
-		prevNode->next = new;
+		prev = temp;
+		temp = temp->next;
 	}
+	/* check if index is out of range*/
+	if (temp == NULL && i < idx)
+	{
+		free(new);
+		return (NULL);
+	}
+	/*Insert at specific index or at the end of list*/
+	new->next = temp;
+	prev->next = new;
 	return (new);
 }
