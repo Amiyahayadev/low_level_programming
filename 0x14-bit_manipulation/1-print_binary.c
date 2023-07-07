@@ -10,6 +10,13 @@ void print_binary(unsigned long int n)
 	/*Variable to track leading zeros*/
 	int i, leading_zero = 1;
 
+	/*Print a single '0' if the number is zero*/
+	if (n == 0)
+	{ 
+		_putchar('0');
+		return;
+	}
+	
 	for (i = 31; i >= 0; i--)
 	{
 		if ((n >> i) & 1)
@@ -17,7 +24,6 @@ void print_binary(unsigned long int n)
 		if (!leading_zero)
 			_putchar(((n >> i) & 1) ? '1' : '0');
 	}
-	/*Print a single '0' if the number is zero*/
 	if (leading_zero)
 		_putchar('0');
 }
