@@ -30,10 +30,12 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	buff[r] = '\0';
 	n = write(STDOUT_FILENO, buff, r);
 	if (n == -1 || !r)
+	{
+		free(buff);
+		close(fd);
 		return (0);
-	else
-		return (n);
-
+	}
 	free(buff);
 	close(fd);
+	return (n);
 }
