@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * create_file - function that creates a file
  * @filename: file to create
@@ -20,8 +21,8 @@ int create_file(const char *filename, char *text_content)
 
 	if (text_content != NULL)
 	{
-		content_length = strlen(text_content);
-		n = write(fd, text_content, content_length);
+		content_length = _strlen(text_content);
+		n = write(fd text_content, content_length);
 		if (n == -1 || !n)
 		{
 			close(fd);
@@ -32,3 +33,18 @@ int create_file(const char *filename, char *text_content)
 	return (1);
 }
 
+/**
+ * _strlen - returns the length of a string
+ * @s: the string to be measured
+ *
+ * Return: the actual length of the string
+ */
+int _strlen(char *s)
+{
+	int len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
+}
