@@ -22,7 +22,7 @@ int create_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 	{
 		content_length = _strlen(text_content);
-		n = write(fd text_content, content_length);
+		n = write(fd, text_content, content_length);
 		if (n == -1 || !n)
 		{
 			close(fd);
