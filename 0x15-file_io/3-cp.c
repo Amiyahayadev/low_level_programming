@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-#include <string.h>
 
 /**
  * print_error - displays human readable error message
@@ -17,9 +16,6 @@ void print_error(int error_code, const char *file_name)
 			break;
 		case 99:
 			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
-			break;
-		case 100:
-			dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", strerror(errno));
 			break;
 		default:
 			dprintf(STDERR_FILENO, "Unknown error\n");
@@ -68,7 +64,7 @@ void copy_file_contents(int fd_from, int fd_to, const char *file_to)
  */
 int cp(const char *file_from, const char *file_to)
 {
-	int fd_from, fd_to;
+	int fd_from, fd_to, fd_value;
 
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from == -1)
@@ -87,20 +83,27 @@ int cp(const char *file_from, const char *file_to)
 
 	if (close(fd_from) == -1)
 	{
-		print_error(100, "");
+		fd_value = fd_from;
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_value);
 		close(fd_to);
 		exit(100);
 	}
 
 	if (close(fd_to) == -1)
 	{
-		print_error(100, "");
+		fd_value = fd_to;
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_value);
 		exit(100);
 	}
 
 	return (1);
 }
-
+/**
+ * main - entry point
+ * @argc: argument count
+ * @argv: array of string arguments
+ * Return: 1 on success, 0 on exit
+ */
 int main(int argc, char *argv[])
 {
 	const char *file_from, *file_to;
