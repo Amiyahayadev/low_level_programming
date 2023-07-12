@@ -30,7 +30,7 @@ void print_error(int error_code, const char *file_name)
  * @file_to: destination file name
  * Return: nothing
  */
-void copy_file_contents(int fd_from, int fd_to, const char *file_to)
+void copy_file_contents(int fd_from, int fd_to, const char *file_to, const char *file_from)
 {
 	char buffer[BUFFER_SIZE];
 	ssize_t bytes_read, bytes_written;
@@ -79,7 +79,7 @@ int cp(const char *file_from, const char *file_to)
 		close(fd_from);
 		exit(99);
 	}
-	copy_file_contents(fd_from, fd_to, file_to);
+	copy_file_contents(fd_from, fd_to, file_to, file_from);
 
 	if (close(fd_from) == -1)
 	{
