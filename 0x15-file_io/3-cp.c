@@ -37,6 +37,13 @@ void copy_file_contents(int fd_from, int fd_to, const char *file_to, const char 
 
 	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
+		if (bytes_read <= 0)
+		{
+			print_error(98, file_from);
+			close(fd_from);
+			close(fd_to);
+			exit(98);
+		}
 		bytes_written = write(fd_to, buffer, bytes_read);
 		if (bytes_written == -1 || bytes_written != bytes_read)
 		{
@@ -46,14 +53,6 @@ void copy_file_contents(int fd_from, int fd_to, const char *file_to, const char 
 			exit(99);
 		}
 	}
-	if (bytes_read == -1)
-	{
-		print_error(98, file_from);
-		close(fd_from);
-		close(fd_to);
-		exit(98);
-	}
-
 }
 
 /**
