@@ -10,10 +10,9 @@
 ssize_t read_textfile(const char *filename, size_t letters);
 int create_file(const char *filename, char *text_content);
 int append_text_to_file(const char *filename, char *text_content);
-void print_error(int error_code, const char *file_name);
-int cp(const char *file_from, const char *file_to);
-void copy_file_contents(int fd_from, int fd_to, const char *file_to,
-const char *file_from);
+void print_error(int error_code, char *file_name);
+void cp(int fd_from, int fd_to, char *file_from, char *file_to);
+void check_file_close(int ret);
 int _strlen(char *s);
 
 #endif

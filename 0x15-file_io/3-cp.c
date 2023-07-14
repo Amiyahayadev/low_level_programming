@@ -7,7 +7,7 @@
  * @file_name: cause of error
  * Return: nothing
  */
-void print_error(int error_code, const char *file_name)
+void print_error(int error_code, char *file_name)
 {
 	switch (error_code)
 	{
@@ -24,100 +24,89 @@ void print_error(int error_code, const char *file_name)
 }
 
 /**
- * copy_file_contents -  file copying logic
+ * cp -  copies entire content from one file to another
  * @fd_from: file descriptor of file to copy from
  * @fd_to: file descriptor of file to write into
  * @file_to: destination file name
- * Return: nothing
+ * @file_from: source file
+ * Return: 0
  */
-void copy_file_contents(int fd_from, int fd_to, const char *file_to, const char *file_from)
+void cp(int fd_from, int fd_to, char *file_from, char *file_to)
 {
 	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read, bytes_written;
+	ssize_t bytes_read = 1, bytes_written, count;
 
-	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+	while (bytes_read != 0)
 	{
-		if (bytes_read <= 0)
+		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
 		{
 			print_error(98, file_from);
-			close(fd_from);
-			close(fd_to);
 			exit(98);
 		}
-		bytes_written = write(fd_to, buffer, bytes_read);
-		if (bytes_written == -1 || bytes_written != bytes_read)
+		bytes_written = 0;
+		while (bytes_written < bytes_read)
 		{
-			print_error(99, file_to);
-			close(fd_from);
-			close(fd_to);
-			exit(99);
+			count = write(fd_to, buffer + bytes_written, bytes_read - bytes_written);
+			if (count == -1)
+			{
+				print_error(99, file_to);
+				exit(99);
+			}
+			bytes_written += count;
 		}
 	}
 }
 
 /**
- * cp - copies entire content from one file to another
- * @file_from: name of the source file to copy from
- * @file_to: name of the destination file
- * Return: 1 on success
+ * check_file_close - checks if fail failes to close, handles errors
+ * @ret: return value of the file descriptor
+ * Return: nothing
  */
-int cp(const char *file_from, const char *file_to)
+void check_file_close(int ret)
 {
-	int fd_from, fd_to, fd_value;
-
-	fd_from = open(file_from, O_RDONLY);
-	if (fd_from == -1)
+	if (ret == -1)
 	{
-		print_error(98, file_from);
-		exit(98);
-	}
-	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fd_to == -1)
-	{
-		print_error(99, file_to);
-		close(fd_from);
-		exit(99);
-	}
-	copy_file_contents(fd_from, fd_to, file_to, file_from);
-
-	if (close(fd_from) == -1)
-	{
-		fd_value = fd_from;
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_value);
-		close(fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", ret);
 		exit(100);
 	}
-
-	if (close(fd_to) == -1)
-	{
-		fd_value = fd_to;
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_value);
-		exit(100);
-	}
-
-	return (1);
 }
+
 /**
  * main - entry point
  * @argc: argument count
  * @argv: array of string arguments
- * Return: 1 on success, 0 on exit
+ * Return: 0 on  Success, exit on failure
  */
 int main(int argc, char *argv[])
 {
-	const char *file_from, *file_to;
-	int res;
+	int fd_from, fd_to;
+	int ret_frm, ret_to;
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	file_from = argv[1];
-	file_to = argv[2];
+	fd_from = open(argv[1], O_RDONLY);
+	if (fd_from == -1)
+	{
+		print_error(98, argv[1]);
+		exit(98);
+	}
 
-	res = cp(file_from, file_to);
-	if (res != 0)
-		return (res);
+	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (fd_to == -1)
+	{
+		print_error(99, argv[2]);
+		exit(99);
+	}
+	cp(fd_from, fd_to, argv[1], argv[2]);/*call to cp*/
+
+	ret_to = close(fd_to);
+	check_file_close(ret_to);
+	ret_frm = close(fd_from);
+	check_file_close(ret_frm);
+
 	return (0);
 }
