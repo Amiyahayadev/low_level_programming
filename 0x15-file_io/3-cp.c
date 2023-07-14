@@ -34,7 +34,7 @@ void print_error(int error_code, char *file_name)
 void cp(int fd_from, int fd_to, char *file_from, char *file_to)
 {
 	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read = 1, bytes_written, count;
+	int bytes_read = 1, bytes_written, count;
 
 	while (bytes_read != 0)
 	{
