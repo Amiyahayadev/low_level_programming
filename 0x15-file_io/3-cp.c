@@ -13,13 +13,13 @@ void print_error(int error_code, char *file_name)
 	{
 		case 98:
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
-			break;
+			exit(98);
 		case 99:
 			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
-			break;
+			exit(99);
 		default:
 			dprintf(STDERR_FILENO, "Unknown error\n");
-			break;
+			exit(1);
 	}
 }
 
@@ -40,19 +40,14 @@ void cp(int fd_from, int fd_to, char *file_from, char *file_to)
 	{
 		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
-		{
 			print_error(98, file_from);
-			exit(98);
-		}
+
 		bytes_written = 0;
 		while (bytes_written < bytes_read)
 		{
 			count = write(fd_to, buffer + bytes_written, bytes_read - bytes_written);
 			if (count == -1)
-			{
 				print_error(99, file_to);
-				exit(99);
-			}
 			bytes_written += count;
 		}
 	}
@@ -92,14 +87,12 @@ int main(int argc, char *argv[])
 	if (fd_from == -1)
 	{
 		print_error(98, argv[1]);
-		exit(98);
 	}
 
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_to == -1)
 	{
 		print_error(99, argv[2]);
-		exit(99);
 	}
 	cp(fd_from, fd_to, argv[1], argv[2]);/*call to cp*/
 
