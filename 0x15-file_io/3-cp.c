@@ -38,7 +38,7 @@ void cp(int fd_from, int fd_to, char *file_from, char *file_to)
 
 	while (bytes_read != 0)
 	{
-		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
+		bytes_read = read(fd_from, buffer, sizeof(buffer));
 		if (bytes_read == -1)
 			print_error(98, file_from);
 
