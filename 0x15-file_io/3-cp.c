@@ -3,24 +3,32 @@
 
 /**
  * handle_read_error - handles read error and exits
+ * @fd: file descriptor
  * @file_name: cause of error
  * Return: nothing
  */
-void handle_read_error(char *file_name)
+void handle_read_error(int fd, char *file_name)
 {
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
-	exit(98);
+	if (fd == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
+		exit(98);
+	}
 }
 
 /**
  * handle_write_error - handles write error and exits
+ * @fd: file descriptor
  * @file_name: cause of error
  * Return: nothing
  */
-void handle_write_error(char *file_name)
+void handle_write_error(int fd, char *file_name)
 {
-	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
-	exit(99);
+	if (fd == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
+		exit(99);
+	}
 }
 
 /**
@@ -39,15 +47,13 @@ void cp(int fd_from, int fd_to, char *file_from, char *file_to)
 	while (bytes_read != 0)
 	{
 		bytes_read = read(fd_from, buffer, sizeof(buffer));
-		if (bytes_read == -1)
-			handle_read_error(file_from);
+		handle_read_error(bytes_read, file_from);
 
 		bytes_written = 0;
 		while (bytes_written < bytes_read)
 		{
 			count = write(fd_to, buffer + bytes_written, bytes_read - bytes_written);
-			if (count == -1)
-				handle_write_error(file_to);
+			handle_write_error(count, file_to);
 			bytes_written += count;
 		}
 	}
@@ -84,16 +90,11 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
-	{
-		handle_read_error(argv[1]);
-	}
+	handle_read_error(fd_from, argv[1]);
 
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fd_to == -1)
-	{
-		handle_write_error(argv[2]);
-	}
+	handle_write_error(fd_to, argv[2]);
+
 	cp(fd_from, fd_to, argv[1], argv[2]);/*call to cp*/
 
 	ret_to = close(fd_to);
