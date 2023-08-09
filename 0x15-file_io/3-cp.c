@@ -2,25 +2,25 @@
 #include <stdio.h>
 
 /**
- * print_error - displays human readable error message
- * @error_code: valid exit error code
+ * handle_read_error - handles read error and exits
  * @file_name: cause of error
  * Return: nothing
  */
-void print_error(int error_code, char *file_name)
+void handle_read_error(char *file_name)
 {
-	switch (error_code)
-	{
-		case 98:
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
-			exit(98);
-		case 99:
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
-			exit(99);
-		default:
-			dprintf(STDERR_FILENO, "Unknown error\n");
-			exit(1);
-	}
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
+	exit(98);
+}
+
+/**
+ * handle_write_error - handles write error and exits
+ * @file_name: cause of error
+ * Return: nothing
+ */
+void handle_write_error(char *file_name)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
+	exit(99);
 }
 
 /**
@@ -40,14 +40,14 @@ void cp(int fd_from, int fd_to, char *file_from, char *file_to)
 	{
 		bytes_read = read(fd_from, buffer, sizeof(buffer));
 		if (bytes_read == -1)
-			print_error(98, file_from);
+			handle_read_error(file_from);
 
 		bytes_written = 0;
 		while (bytes_written < bytes_read)
 		{
 			count = write(fd_to, buffer + bytes_written, bytes_read - bytes_written);
 			if (count == -1)
-				print_error(99, file_to);
+				handle_write_error(file_to);
 			bytes_written += count;
 		}
 	}
@@ -86,13 +86,13 @@ int main(int argc, char *argv[])
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
 	{
-		print_error(98, argv[1]);
+		handle_read_error(argv[1]);
 	}
 
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_to == -1)
 	{
-		print_error(99, argv[2]);
+		handle_write_error(argv[2]);
 	}
 	cp(fd_from, fd_to, argv[1], argv[2]);/*call to cp*/
 
